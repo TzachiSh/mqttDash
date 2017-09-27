@@ -10,7 +10,6 @@ const localOpts = {
 const localLogin = new LocalStrategy(localOpts, async (email, password, done) => {
   try {
     const user = await AuthModel.findOne({ email });
-
     if(!user) {
       return done( null, false);
     }else if (!user.authenticateUser(password)){
@@ -25,3 +24,4 @@ const localLogin = new LocalStrategy(localOpts, async (email, password, done) =>
 passport.use(localLogin);
 
 export const authLocal = passport.authenticate('local', {session:false});
+

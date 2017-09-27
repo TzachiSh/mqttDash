@@ -6,6 +6,6 @@ import AuthServices from './auth-services';
 const routes = new Router();
 
 routes.post('/register', authController.singup);
-routes.post('/login', authController.login, AuthServices.loginMiddleware);
+routes.post('/login',AuthServices.loginMiddleware ,authController.login);
 
 export default routes;
